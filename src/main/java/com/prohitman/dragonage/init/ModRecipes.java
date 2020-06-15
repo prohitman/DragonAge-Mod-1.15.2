@@ -11,9 +11,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModRecipes {
-	@SuppressWarnings("deprecation")
-	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = new DeferredRegister<>(
-			ForgeRegistries.RECIPE_SERIALIZERS, DragonAge.MOD_ID);
+
+	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, DragonAge.MOD_ID);
 
 	public static final RegistryObject<IRecipeSerializer<?>> CRAFTING_SPECIAL_STEEL_SHIELD = RECIPE_SERIALIZERS
 			.register("crafting_special_steelshielddecoration",
