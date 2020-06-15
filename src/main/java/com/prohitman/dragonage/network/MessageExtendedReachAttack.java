@@ -37,7 +37,7 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 	@Override
 	public void handle(MessageExtendedReachAttack message, Supplier<NetworkEvent.Context> ctx) {
 		// DEBUG
-		System.out.println("Message received");
+		//System.out.println("Message received");
 		// Know it will be on the server so make it thread-safe
 		final ServerPlayerEntity thePlayer = (ServerPlayerEntity) ctx.get().getSender();
 		thePlayer.getServer().deferTask(new Runnable() {
@@ -46,7 +46,7 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 
 				Entity theEntity = thePlayer.getEntityWorld().getEntityByID(message.entityId);
 				// DEBUG
-				System.out.println("Entity = " + theEntity);
+				//System.out.println("Entity = " + theEntity);
 
 				// Need to ensure that hackers can't cause trick kills,
 				// so double check weapon type and reach
@@ -74,7 +74,7 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 							// attack an invalid entity");
 						}
 						thePlayer.attackTargetEntityWithCurrentItem(theEntity);
-						System.out.println("This was Successful!");
+						//System.out.println("This was Successful!");
 					}
 				} // no response in this case
 			}
