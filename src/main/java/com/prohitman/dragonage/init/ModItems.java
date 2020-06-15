@@ -18,6 +18,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModItems 
 {
+	@SuppressWarnings("deprecation")
 	public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, DragonAge.MOD_ID);
 	
 	//Materials

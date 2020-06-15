@@ -12,6 +12,7 @@ import net.minecraftforge.common.extensions.IForgeContainerType;
 public class ModContainerTypes 
 {
 	
+	@SuppressWarnings("deprecation")
 	public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = new DeferredRegister<>(
 			ForgeRegistries.CONTAINERS, DragonAge.MOD_ID);
 
