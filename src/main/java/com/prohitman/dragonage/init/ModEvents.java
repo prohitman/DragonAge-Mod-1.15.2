@@ -76,7 +76,7 @@ public class ModEvents {
 						if (!Minecraft.getInstance().world
 								.isAirBlock(blockpos) /* && thePlayer.pos.getDistanceSq(blockpos) <= 25 */) {
 							Minecraft.getInstance().playerController.clickBlock(blockpos,
-									blockraytraceresult.getFace()); 
+									blockraytraceresult.getFace());
 							break;
 						}
 
