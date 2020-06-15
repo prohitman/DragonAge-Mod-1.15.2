@@ -39,11 +39,11 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 		// DEBUG
 		System.out.println("Message received");
 		// Know it will be on the server so make it thread-safe
-		final ServerPlayerEntity thePlayer =  (ServerPlayerEntity)ctx.get().getSender();
-		ctx.get().enqueueWork(() -> new Runnable() {
+		final ServerPlayerEntity thePlayer = (ServerPlayerEntity) ctx.get().getSender();
+		thePlayer.getServer().deferTask(new Runnable() {
 			@Override
 			public void run() {
-				
+
 				Entity theEntity = thePlayer.getEntityWorld().getEntityByID(message.entityId);
 				// DEBUG
 				System.out.println("Entity = " + theEntity);
@@ -51,7 +51,8 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 				// Need to ensure that hackers can't cause trick kills,
 				// so double check weapon type and reach
 
-				if (thePlayer.getHeldItemMainhand().getItem() instanceof IExtendedReach && !(thePlayer.getHeldItemMainhand().getItem() == null))
+				if (thePlayer.getHeldItemMainhand().getItem() instanceof IExtendedReach
+						&& !(thePlayer.getHeldItemMainhand().getItem() == null))
 
 				{
 					IExtendedReach theExtendedReachWeapon = (IExtendedReach) thePlayer.getHeldItemMainhand().getItem();
@@ -69,7 +70,8 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 								|| theEntity instanceof ArrowEntity || theEntity == thePlayer) {
 							thePlayer.connection.disconnect(new TranslationTextComponent(
 									"multiplayer.disconnect.invalid_entity_attacked", new Object[0]));
-							 //this.serverController.logWarning("Player " + thePlayer.getName() + " tried to attack an invalid entity");
+							// this.serverController.logWarning("Player " + thePlayer.getName() + " tried to
+							// attack an invalid entity");
 						}
 						thePlayer.attackTargetEntityWithCurrentItem(theEntity);
 						System.out.println("This was Successful!");
