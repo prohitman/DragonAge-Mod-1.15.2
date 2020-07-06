@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = DragonAge.MOD_ID, bus = Bus.FORGE)
 public class ModEvents {
-	
+
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onEvent(InputEvent event) {

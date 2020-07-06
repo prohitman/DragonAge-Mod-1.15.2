@@ -27,30 +27,28 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod("dragonage")
 @Mod.EventBusSubscriber(modid = DragonAge.MOD_ID, bus = Bus.MOD)
-public class DragonAge
-{
-	
-	public static final String MOD_ID = "dragonage";
-	
-    public DragonAge() {
-    	final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        
-        ModItems.ITEMS.register(modEventBus);
-        ModBlocks.BLOCKS.register(modEventBus);
-        ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
-        ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
-        ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
+public class DragonAge {
 
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-    
-    @SubscribeEvent
-	public static void onRegisterItems(final RegistryEvent.Register<Item> event) 
-    {
+	public static final String MOD_ID = "dragonage";
+
+	public DragonAge() {
+		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+		ModItems.ITEMS.register(modEventBus);
+		ModBlocks.BLOCKS.register(modEventBus);
+		ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
+		ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
+
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	@SubscribeEvent
+	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
 		ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
@@ -61,26 +59,24 @@ public class DragonAge
 		});
 	}
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-    	DragonAgePacketHandler.init();
-    }
+	private void setup(final FMLCommonSetupEvent event) {
+		DragonAgePacketHandler.init();
+	}
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-    }
+	private void doClientStuff(final FMLClientSetupEvent event) {
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        
-    }
+	}
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        
-    }
-    
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-       
-    }
+	private void enqueueIMC(final InterModEnqueueEvent event) {
+
+	}
+
+	private void processIMC(final InterModProcessEvent event) {
+
+	}
+
+	@SubscribeEvent
+	public void onServerStarting(FMLServerStartingEvent event) {
+
+	}
 }

@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "block/cube",
+	"parent": "minecraft:block/block",
 	"ambientocclusion": false,
 	"textures": {
 		"0": "dragonage:block/forging_table",
@@ -10,6 +10,7 @@
 		{
 			"from": [2, 0, 9],
 			"to": [4, 7, 11],
+
 			"faces": {
 				"north": {"uv": [8, 9.5, 9, 13], "texture": "#0"},
 				"east": {"uv": [8, 9.5, 9, 13], "texture": "#0"},
@@ -22,6 +23,7 @@
 		{
 			"from": [12, 0, 9],
 			"to": [14, 7, 11],
+
 			"faces": {
 				"north": {"uv": [8, 9.5, 9, 13], "texture": "#0"},
 				"east": {"uv": [8, 9.5, 9, 13], "texture": "#0"},

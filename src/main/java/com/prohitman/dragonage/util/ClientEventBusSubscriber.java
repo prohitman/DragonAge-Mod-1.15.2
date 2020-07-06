@@ -20,6 +20,6 @@ public class ClientEventBusSubscriber
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainerTypes.FORGING_TABLE_CONTAINER.get(), ForgingTableScreen::new);
-		RenderTypeLookup.setRenderLayer(ModBlocks.FORGING_TABLE.get().getBlock(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.FORGING_TABLE.get(), RenderType.getCutoutMipped());
 	}
 }
