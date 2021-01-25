@@ -7,10 +7,10 @@
   ],
   "key": {
     "X": {
-      "item": "dragonage:steel_ingot"
+      "item": "dragonsdungeons:steel_ingot"
     }
   },
   "result": {
-    "item": "dragonage:steel_block"
+    "item": "dragonsdungeons:steel_block"
   }
 }

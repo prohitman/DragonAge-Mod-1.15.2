@@ -11,9 +11,5 @@ public class SteelBlock extends Block
 	public SteelBlock(Block.Properties properties) {
 		super(properties);
 	}
-	
-	@Override
-	public boolean isBeaconBase(BlockState state, IWorldReader world, BlockPos pos, BlockPos beacon) {
-		return true;
-	}
+
 }

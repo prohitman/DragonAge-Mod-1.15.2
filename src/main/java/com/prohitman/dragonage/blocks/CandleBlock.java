@@ -34,18 +34,14 @@ public class CandleBlock extends Block {
 			.of(Block.makeCuboidShape(7.58668, 5.00314, 7.90375, 8.58668, 7.00314, 7.90375),
 					Block.makeCuboidShape(7.59654, 5.00314, 7.90329, 8.59654, 7.00314, 7.90329),
 					Block.makeCuboidShape(6.5, 0, 6.5, 9.5, 5, 9.5))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	protected static final VoxelShape TWO_CANDLES = Stream.of(Block.makeCuboidShape(3.5, 0, 4.5, 6.5, 5, 7.5),
 			Block.makeCuboidShape(6.87957, 5.00314, 4.36822, 7.87957, 7.00314, 4.36822),
 			Block.makeCuboidShape(5.68773, 7, 9.96, 6.68773, 9, 9.96),
 			Block.makeCuboidShape(4.06101, 5.00314, 8.6104, 5.06101, 7.00314, 8.6104),
 			Block.makeCuboidShape(9.83397, 7, 9.17772, 10.83397, 9, 9.17772), Block.makeCuboidShape(6, 0, 9, 9, 7, 12))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	protected static final VoxelShape THREE_CANDLES = Stream.of(Block.makeCuboidShape(3.5, 0, 4.5, 6.5, 5, 7.5),
 			Block.makeCuboidShape(
@@ -57,18 +53,16 @@ public class CandleBlock extends Block {
 			Block.makeCuboidShape(6, 0, 9, 9, 7, 12), Block.makeCuboidShape(9.5, 0, 5.5, 12.5, 6, 8.5),
 			Block.makeCuboidShape(10.055456351736995, 6, 5.6767766952966365, 11.055456351736995, 8, 5.6767766952966365),
 			Block.makeCuboidShape(10.896446609406727, 6, 6.353553390593274, 10.896446609406727, 8, 7.353553390593274))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	public CandleBlock(Block.Properties properties) {
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(CANDLES, Integer.valueOf(1)));
 	}
 
-	@SuppressWarnings("deprecation")
-	public int getLightValue(BlockState state) {
-		return super.getLightValue(state) + state.get(CANDLES);
+	@Override
+	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+		return state.get(CANDLES).intValue() + state.getLightValue();
 	}
 
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {

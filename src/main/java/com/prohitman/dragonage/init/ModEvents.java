@@ -19,7 +19,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
@@ -105,7 +105,7 @@ public class ModEvents {
 				Minecraft.getInstance().getProfiler().startSection("pick");
 				double d0 = dist;
 				Minecraft.getInstance().objectMouseOver = entity.pick(d0, 1.0F, false);
-				Vec3d vec3d = entity.getEyePosition(1.0F);
+				Vector3d Vector3d = entity.getEyePosition(1.0F);
 				boolean flag = false;
 				double d1 = d0;
 
@@ -116,27 +116,24 @@ public class ModEvents {
 				}
 
 				if (Minecraft.getInstance().objectMouseOver != null) {
-					d1 = Minecraft.getInstance().objectMouseOver.getHitVec().squareDistanceTo(vec3d);
+					d1 = Minecraft.getInstance().objectMouseOver.getHitVec().squareDistanceTo(Vector3d);
 				}
 
 				d1 = d1 * d1;
 
-				Vec3d vec3d1 = entity.getLook(1.0F);
-				Vec3d vec3d2 = vec3d.add(vec3d1.x * d0, vec3d1.y * d0, vec3d1.z * d0);
-				AxisAlignedBB axisalignedbb = entity.getBoundingBox().expand(vec3d1.scale(d0)).grow(1.0D, 1.0D, 1.0D);
-				EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(entity, vec3d, vec3d2,
-						axisalignedbb, (Entity) -> {
-							return !Entity.isSpectator() && Entity.canBeCollidedWith();
-						}, d1);
+				Vector3d Vector3d1 = entity.getLook(1.0F);
+				Vector3d Vector3d2 = Vector3d.add(Vector3d1.x * d0, Vector3d1.y * d0, Vector3d1.z * d0);
+				AxisAlignedBB axisalignedbb = entity.getBoundingBox().expand(Vector3d1.scale(d0)).grow(1.0D, 1.0D, 1.0D);
+				EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(entity, Vector3d, Vector3d2,
+						axisalignedbb, (Entity) -> !Entity.isSpectator() && Entity.canBeCollidedWith(), d1);
 				if (entityraytraceresult != null) {
 					Entity pointedEntity = entityraytraceresult.getEntity();
-					Vec3d vec3d3 = entityraytraceresult.getHitVec();
-					double d2 = vec3d.squareDistanceTo(vec3d3);
+					Vector3d Vector3d3 = entityraytraceresult.getHitVec();
+					double d2 = Vector3d.squareDistanceTo(Vector3d3);
 
 					if (pointedEntity != null && flag && d2 > d1) {
-						pointedEntity = null;
-						Minecraft.getInstance().objectMouseOver = BlockRayTraceResult.createMiss(vec3d3,
-								Direction.getFacingFromVector(vec3d1.x, vec3d1.y, vec3d1.z), new BlockPos(vec3d3));
+						Minecraft.getInstance().objectMouseOver = BlockRayTraceResult.createMiss(Vector3d3,
+								Direction.getFacingFromVector(Vector3d1.x, Vector3d1.y, Vector3d1.z), new BlockPos(Vector3d3));
 					}
 
 					else if (pointedEntity != null && (d2 < d1 || Minecraft.getInstance().objectMouseOver == null)) {

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dragonage:steel_block"
+          "name": "dragonsdungeons:steel_block"
         }
       ],
       "conditions": [

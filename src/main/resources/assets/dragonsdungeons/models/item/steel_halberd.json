@@ -3,7 +3,7 @@
 	"parent": "item/generated",
 	"textures": 
 	{
-		"layer0": "dragonage:item/steel_halberd"
+		"layer0": "dragonsdungeons:item/steel_halberd"
 	},
 	
 	"display": {

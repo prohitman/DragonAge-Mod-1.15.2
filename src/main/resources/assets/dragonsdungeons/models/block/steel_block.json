@@ -2,7 +2,7 @@
 	
     "parent": "block/cube_all",
     "textures": {
-        "all": "dragonage:block/steel_block"
+        "all": "dragonsdungeons:block/steel_block"
     }
 }
 }

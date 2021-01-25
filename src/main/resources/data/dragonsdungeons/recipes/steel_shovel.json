@@ -7,13 +7,13 @@
   ],
   "key": {
     "X": {
-      "item": "dragonage:steel_ingot"
+      "item": "dragonsdungeons:steel_ingot"
     },
 "S": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "dragonage:steel_shovel"
+    "item": "dragonsdungeons:steel_shovel"
   }
 }

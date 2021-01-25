@@ -3,51 +3,43 @@
 	"language.region": "United States",
 	"language.code": "en_us",
 	
-	//ItemGroups
-	
 	"itemGroup.dragon_age_weapons": "Dragon Age Weapons",
 	"itemGroup.dragon_age_tools": "Dragon Age Tools",
 	
-	//Items
-	"item.dragonage.steel_ingot": "Steel Ingot",
-	"item.dragonage.steel_nugget": "Steel Nugget",
+	"item.dragonsdungeons.steel_ingot": "Steel Ingot",
+	"item.dragonsdungeons.steel_nugget": "Steel Nugget",
 	
-	//Weapons
-	"item.dragonage.steel_sword": "Steel Sword",
-	"item.dragonage.great_steel_sword": "Great Steel Sword",
-	"item.dragonage.steel_halberd": "Steel Halberd",
-	"item.dragonage.steel_battle_axe": "Steel Battle Axe",
+	"item.dragonsdungeons.steel_sword": "Steel Sword",
+	"item.dragonsdungeons.great_steel_sword": "Great Steel Sword",
+	"item.dragonsdungeons.steel_halberd": "Steel Halberd",
+	"item.dragonsdungeons.steel_battle_axe": "Steel Battle Axe",
 	
-	//Shields
-	"item.dragonage.steel_shield": "Steel Shield",
-	"item.dragonage.steel_shield.black": "Black Steel Shield",
-  	"item.dragonage.steel_shield.red": "Red Steel Shield",
-  	"item.dragonage.steel_shield.green": "Green Steel Shield",
-  	"item.dragonage.steel_shield.brown": "Brown Steel Shield",
-  	"item.dragonage.steel_shield.blue": "Blue Steel Shield",
-  	"item.dragonage.steel_shield.purple": "Purple Steel Shield",
-  	"item.dragonage.steel_shield.cyan": "Cyan Steel Shield",
-  	"item.dragonage.steel_shield.light_gray": "Light Gray Steel Shield",
-  	"item.dragonage.steel_shield.gray": "Gray Steel Shield",
-  	"item.dragonage.steel_shield.pink": "Pink Steel Shield",
-  	"item.dragonage.steel_shield.lime": "Lime Steel Shield",
-  	"item.dragonage.steel_shield.yellow": "Yellow Steel Shield",
-  	"item.dragonage.steel_shield.light_blue": "Light Blue Steel Shield",
-  	"item.dragonage.steel_shield.magenta": "Magenta Steel Shield",
-  	"item.dragonage.steel_shield.orange": "Orange Steel Shield",
-  	"item.dragonage.steel_shield.white": "White Steel Shield",
+	"item.dragonsdungeons.steel_shield": "Steel Shield",
+	"item.dragonsdungeons.steel_shield.black": "Black Steel Shield",
+  	"item.dragonsdungeons.steel_shield.red": "Red Steel Shield",
+  	"item.dragonsdungeons.steel_shield.green": "Green Steel Shield",
+  	"item.dragonsdungeons.steel_shield.brown": "Brown Steel Shield",
+  	"item.dragonsdungeons.steel_shield.blue": "Blue Steel Shield",
+  	"item.dragonsdungeons.steel_shield.purple": "Purple Steel Shield",
+  	"item.dragonsdungeons.steel_shield.cyan": "Cyan Steel Shield",
+  	"item.dragonsdungeons.steel_shield.light_gray": "Light Gray Steel Shield",
+  	"item.dragonsdungeons.steel_shield.gray": "Gray Steel Shield",
+  	"item.dragonsdungeons.steel_shield.pink": "Pink Steel Shield",
+  	"item.dragonsdungeons.steel_shield.lime": "Lime Steel Shield",
+  	"item.dragonsdungeons.steel_shield.yellow": "Yellow Steel Shield",
+  	"item.dragonsdungeons.steel_shield.light_blue": "Light Blue Steel Shield",
+  	"item.dragonsdungeons.steel_shield.magenta": "Magenta Steel Shield",
+  	"item.dragonsdungeons.steel_shield.orange": "Orange Steel Shield",
+  	"item.dragonsdungeons.steel_shield.white": "White Steel Shield",
 	
-	//Tools
-	"item.dragonage.steel_pickaxe": "Steel Pickaxe",
-	"item.dragonage.steel_axe": "Steel Axe",
-	"item.dragonage.steel_shovel": "Steel Shovel",
-	"item.dragonage.steel_hoe": "Steel Hoe",
+	"item.dragonsdungeons.steel_pickaxe": "Steel Pickaxe",
+	"item.dragonsdungeons.steel_axe": "Steel Axe",
+	"item.dragonsdungeons.steel_shovel": "Steel Shovel",
+	"item.dragonsdungeons.steel_hoe": "Steel Hoe",
 	
-	//Blocks
-	"block.dragonage.steel_block": "Block Of Steel",
-	"block.dragonage.dragonage_candle": "Candle",
-	"block.dragonage.forging_table": "Forging Table",
+	"block.dragonsdungeons.steel_block": "Block Of Steel",
+	"block.dragonsdungeons.candle": "Candle",
+	"block.dragonsdungeons.forging_table": "Forging Table",
 	
-	//Containers
 	"container.forging_table": "Forging Table"
 }

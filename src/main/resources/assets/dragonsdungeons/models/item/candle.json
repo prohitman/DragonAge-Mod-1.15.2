@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures":
     {
-        "layer0": "dragonage:item/dragonage_candle"
+        "layer0": "dragonsdungeons:item/candle"
     }
 }

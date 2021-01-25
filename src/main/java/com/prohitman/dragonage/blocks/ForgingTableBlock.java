@@ -40,36 +40,28 @@ public class ForgingTableBlock extends Block {
 			Block.makeCuboidShape(12, 0, 12, 14, 7, 14), Block.makeCuboidShape(1, 7, 4, 15, 10, 15),
 			Block.makeCuboidShape(11, 0, 1, 15, 16, 2), Block.makeCuboidShape(1, 0, 1, 5, 16, 2),
 			Block.makeCuboidShape(0, 13, 2, 16, 15, 3), Block.makeCuboidShape(0, 8, 3.25, 16, 19, 3.25))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	public static final VoxelShape FACING_EAST = Stream.of(Block.makeCuboidShape(5, 0, 2, 7, 7, 4),
 			Block.makeCuboidShape(5, 0, 12, 7, 7, 14), Block.makeCuboidShape(12, 0, 12, 14, 7, 14),
 			Block.makeCuboidShape(12, 0, 2, 14, 7, 4), Block.makeCuboidShape(4, 7, 1, 15, 10, 15),
 			Block.makeCuboidShape(1, 0, 1, 2, 16, 5), Block.makeCuboidShape(1, 0, 11, 2, 16, 15),
 			Block.makeCuboidShape(2, 13, 0, 3, 15, 16), Block.makeCuboidShape(3.25, 8, 0, 3.25, 19, 16))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	public static final VoxelShape FACING_NORTH = Stream.of(Block.makeCuboidShape(2, 0, 9, 4, 7, 11),
 			Block.makeCuboidShape(12, 0, 9, 14, 7, 11), Block.makeCuboidShape(12, 0, 2, 14, 7, 4),
 			Block.makeCuboidShape(2, 0, 2, 4, 7, 4), Block.makeCuboidShape(1, 7, 1, 15, 10, 12),
 			Block.makeCuboidShape(1, 0, 14, 5, 16, 15), Block.makeCuboidShape(11, 0, 14, 15, 16, 15),
 			Block.makeCuboidShape(0, 13, 13, 16, 15, 14), Block.makeCuboidShape(0, 8, 12.75, 16, 19, 12.75))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	public static final VoxelShape FACING_WEST = Stream.of(Block.makeCuboidShape(9, 0, 12, 11, 7, 14),
 			Block.makeCuboidShape(9, 0, 2, 11, 7, 4), Block.makeCuboidShape(2, 0, 2, 4, 7, 4),
 			Block.makeCuboidShape(2, 0, 12, 4, 7, 14), Block.makeCuboidShape(1, 7, 1, 12, 10, 15),
 			Block.makeCuboidShape(14, 0, 11, 15, 16, 15), Block.makeCuboidShape(14, 0, 1, 15, 16, 5),
 			Block.makeCuboidShape(13, 13, 0, 14, 15, 16), Block.makeCuboidShape(12.75, 8, 0, 12.75, 19, 16))
-			.reduce((v1, v2) -> {
-				return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-			}).get();
+			.reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR)).get();
 
 	public ForgingTableBlock(Block.Properties properties) {
 		super(properties);

@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures": 
     {
-        "layer0": "dragonage:item/steel_nugget"
+        "layer0": "dragonsdungeons:item/steel_nugget"
     }
 }

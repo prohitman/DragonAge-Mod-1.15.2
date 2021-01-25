@@ -3,8 +3,8 @@
 	"parent": "minecraft:block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "dragonage:block/forging_table",
-		"particle": "dragonage:block/forging_table"
+		"0": "dragonsdungeons:block/forging_table",
+		"particle": "dragonsdungeons:block/forging_table"
 	},
 	"elements": [
 		{

@@ -18,6 +18,7 @@ import net.minecraft.inventory.container.RecipeBookContainer;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.RecipeBookCategory;
 import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.server.SSetSlotPacket;
@@ -167,7 +168,12 @@ public class ForgingTableContainer extends RecipeBookContainer<CraftingInventory
 		return 3;
 	}
 
-	/*
+	@Override
+	public RecipeBookCategory func_241850_m() {
+		return null;
+	}
+
+	/**
 	 * Called to determine if the current slot is valid for the stack merging
 	 * (double-click) code. The stack passed in is null for the initial slot that
 	 * was double-clicked.
@@ -176,7 +182,7 @@ public class ForgingTableContainer extends RecipeBookContainer<CraftingInventory
 		return slotIn.inventory != this.outputSlot && super.canMergeSlot(stack, slotIn);
 	}
 
-	/*
+	/**
 	 * Handle when the stack in slot {@code index} is shift-clicked. Normally this
 	 * moves the stack between the player inventory and the other inventory(s).
 	 */

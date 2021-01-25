@@ -2,6 +2,6 @@
     "parent": "item/handheld",
     "textures": 
     {
-        "layer0": "dragonage:item/steel_sword"
+        "layer0": "dragonsdungeons:item/steel_sword"
     }
 }

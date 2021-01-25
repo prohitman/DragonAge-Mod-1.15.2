@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "candles=1": { "model": "dragonsdungeons:block/candle1" },
+        "candles=2": { "model": "dragonsdungeons:block/candle2" },
+        "candles=3": { "model": "dragonsdungeons:block/candle3" }
+    }
+}

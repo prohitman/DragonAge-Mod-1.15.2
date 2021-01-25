@@ -1,5 +1,6 @@
 package com.prohitman.dragonage.items;
 
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.prohitman.dragonage.util.IExtendedReach;
 
@@ -7,8 +8,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IItemTier;
@@ -23,17 +25,19 @@ public class HalberdItem extends TieredItem implements IExtendedReach {
 	private final float attackDamage;
 	private final float attackSpeed;
 	private final float attackReach;
+	/** Modifiers applied when the item is in the mainhand of a user. */
+	private final Multimap<Attribute, AttributeModifier> attributeModifiers;
 
 	public HalberdItem(IItemTier tierIn, float attackDamageIn, float attackSpeedIn, float attackReachIn,
-			Item.Properties builder) {
-		super(tierIn, builder);
-		this.attackDamage = (float) attackDamageIn + tierIn.getAttackDamage();
+			Item.Properties builderIn) {
+		super(tierIn, builderIn);
 		this.attackSpeed = attackSpeedIn;
 		this.attackReach = attackReachIn;
-	}
-
-	public float getAttackDamage() {
-		return this.attackDamage;
+		this.attackDamage = attackDamageIn + tierIn.getAttackDamage();
+		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
+		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", attackSpeedIn, AttributeModifier.Operation.ADDITION));
+		this.attributeModifiers = builder.build();
 	}
 
 	@Override
@@ -91,20 +95,9 @@ public class HalberdItem extends TieredItem implements IExtendedReach {
 	}
 
 	/**
-	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit
-	 * damage.
+	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
 	 */
-	@Override
-	public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-		@SuppressWarnings("deprecation")
-		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
-		if (equipmentSlot == EquipmentSlotType.MAINHAND) {
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER,
-					"Weapon modifier", (double) this.attackDamage, AttributeModifier.Operation.ADDITION));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER,
-					"Weapon modifier", (double) this.attackSpeed, AttributeModifier.Operation.ADDITION));
-		}
-
-		return multimap;
+	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
+		return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(equipmentSlot);
 	}
 }
