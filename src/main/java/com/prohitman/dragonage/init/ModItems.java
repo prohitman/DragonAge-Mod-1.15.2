@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.init;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.client.renderers.SteelShieldItemStackTileEntityRenderer;
 import com.prohitman.dragonage.items.HalberdItem;
 import com.prohitman.dragonage.items.ModItemTiers;
@@ -19,7 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModItems 
 {
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DragonAge.MOD_ID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DragonsDungeons.MOD_ID);
 	
 	//Materials
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));

@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.network;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -14,7 +14,7 @@ public class DragonAgePacketHandler {
 	public static SimpleChannel HANDLER;
 
 	public static void init() {
-		HANDLER = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(DragonAge.MOD_ID, "network"))
+		HANDLER = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(DragonsDungeons.MOD_ID, "network"))
 				.clientAcceptedVersions(PROTOCOL_VERSION::equals).serverAcceptedVersions(PROTOCOL_VERSION::equals)
 				.networkProtocolVersion(() -> PROTOCOL_VERSION).simpleChannel();
 

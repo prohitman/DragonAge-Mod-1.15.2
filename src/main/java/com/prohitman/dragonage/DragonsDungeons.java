@@ -20,18 +20,17 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@Mod("dragonage")
-@Mod.EventBusSubscriber(modid = DragonAge.MOD_ID, bus = Bus.MOD)
-public class DragonAge {
+@Mod("dragonsdungeons")
+@Mod.EventBusSubscriber(modid = DragonsDungeons.MOD_ID, bus = Bus.MOD)
+public class DragonsDungeons {
 
-	public static final String MOD_ID = "dragonage";
+	public static final String MOD_ID = "dragonsdungeons";
 
-	public DragonAge() {
+	public DragonsDungeons() {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
@@ -75,8 +74,4 @@ public class DragonAge {
 
 	}
 
-	@SubscribeEvent
-	public void onServerStarting(FMLServerStartingEvent event) {
-
-	}
 }

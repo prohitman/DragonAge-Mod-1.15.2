@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.init;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.network.DragonAgePacketHandler;
 import com.prohitman.dragonage.network.MessageExtendedReachAttack;
 import com.prohitman.dragonage.util.IExtendedReach;
@@ -30,7 +30,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@Mod.EventBusSubscriber(modid = DragonAge.MOD_ID, bus = Bus.FORGE)
+@Mod.EventBusSubscriber(modid = DragonsDungeons.MOD_ID, bus = Bus.FORGE)
 public class ModEvents {
 
 	@OnlyIn(Dist.CLIENT)

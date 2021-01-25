@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.init;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.containers.ForgingTableContainer;
 
 import net.minecraft.inventory.container.ContainerType;
@@ -12,7 +12,7 @@ import net.minecraftforge.common.extensions.IForgeContainerType;
 public class ModContainerTypes 
 {
 	
-	public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.CONTAINERS, DragonAge.MOD_ID);
+	public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.CONTAINERS, DragonsDungeons.MOD_ID);
 
 	public static final RegistryObject<ContainerType<ForgingTableContainer>> FORGING_TABLE_CONTAINER = CONTAINER_TYPES
 			.register("forging_table", () -> IForgeContainerType.create(ForgingTableContainer::new));

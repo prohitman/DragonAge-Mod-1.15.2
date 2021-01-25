@@ -1,7 +1,7 @@
 package com.prohitman.dragonage.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.containers.ForgingTableContainer;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ForgingTableScreen extends ContainerScreen<ForgingTableContainer> {
 
-	private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(DragonAge.MOD_ID, "textures/gui/forging_table_gui.png");
+	private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(DragonsDungeons.MOD_ID, "textures/gui/forging_table_gui.png");
 
 	public ForgingTableScreen(ForgingTableContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
 		super(screenContainer, inv, titleIn);

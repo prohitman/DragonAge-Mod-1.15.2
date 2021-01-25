@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.util;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.client.renderers.SteelShieldItemStackTileEntityRenderer;
 
 import net.minecraft.client.renderer.texture.AtlasTexture;
@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@Mod.EventBusSubscriber(modid = DragonAge.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = DragonsDungeons.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class ModAtlasTextures {
 
     @SuppressWarnings("deprecation")

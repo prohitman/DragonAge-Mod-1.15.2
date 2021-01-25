@@ -1,6 +1,6 @@
 package com.prohitman.dragonage.init;
 
-import com.prohitman.dragonage.DragonAge;
+import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.recipes.ForgingTableRecipes;
 import com.prohitman.dragonage.recipes.SteelShieldRecipes;
 
@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModRecipes {
 
-	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, DragonAge.MOD_ID);
+	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, DragonsDungeons.MOD_ID);
 
 	public static final RegistryObject<IRecipeSerializer<?>> CRAFTING_SPECIAL_STEEL_SHIELD = RECIPE_SERIALIZERS
 			.register("crafting_special_steelshielddecoration",
