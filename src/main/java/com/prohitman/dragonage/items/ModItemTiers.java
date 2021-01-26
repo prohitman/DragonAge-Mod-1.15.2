@@ -10,9 +10,34 @@ import net.minecraft.util.LazyValue;
 
 public enum ModItemTiers implements IItemTier
 {
-	STEEL(2, 850, 6.5F, 2.5F, 12, () -> 
+	STEEL(2, 800, 6.0F, 2.5F, 12, () ->
 	{
 		return Ingredient.fromItems(ModItems.STEEL_INGOT.get());
+	}),
+
+	MITHRIL(4, 1800, 9.0F, 2.5F, 12, () ->
+	{
+		return Ingredient.fromItems(ModItems.MITHRIL_INGOT.get());
+	}),
+
+	ELVEN_BRASS(3, 910, 8.0F, 2.5F, 14, () ->
+	{
+		return Ingredient.fromItems(ModItems.ELVEN_BRASS_INGOT.get());
+	}),
+
+	DRAGON_BONE(5, 3000, 10.0F, 6.0F, 16, () ->
+	{
+		return Ingredient.fromItems(ModItems.DRAGON_BONE.get());
+	}),
+
+	DWARVEN_STEEL(3, 1400, 8.0F, 2.5F, 15, () ->
+	{
+		return Ingredient.fromItems(ModItems.DWARVEN_STEEL_INGOT.get());
+	}),
+
+	GILDED_IRON(2, 275, 6.0F, 2.5F, 18, () ->
+	{
+		return Ingredient.fromItems(ModItems.GILDED_IRON_INGOT.get());
 	});
 	
 	
