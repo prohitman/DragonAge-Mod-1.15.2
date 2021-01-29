@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "dragonsdungeons:items/dragon_bone_hoe"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "dragonsdungeons:items/dwarven_steel_axe"
+  }
+}

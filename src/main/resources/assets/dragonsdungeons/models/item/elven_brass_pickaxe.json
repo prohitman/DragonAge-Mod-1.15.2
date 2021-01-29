@@ -1,0 +1,7 @@
+{
+  "_comment": "Generated using MiningMark48's JSON Generator.",
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "dragonsdungeons:items/elven_brass_pickaxe"
+  }
+}
