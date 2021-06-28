@@ -18,6 +18,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.Tags;
 
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class DDShovelItem extends ToolItem {
      * Check whether this Item can harvest the given Block
      */
     public boolean canHarvestBlock(BlockState blockIn) {
-        return blockIn.isIn(Blocks.SNOW) || blockIn.isIn(Blocks.SNOW_BLOCK);
+        return blockIn.matchesBlock(Blocks.SNOW) || blockIn.matchesBlock(Blocks.SNOW_BLOCK);
     }
 
     /**

@@ -45,7 +45,7 @@ public class DDSwordItem extends TieredItem implements IVanishable {
     }
 
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        if (state.isIn(Blocks.COBWEB)) {
+        if (state.matchesBlock(Blocks.COBWEB)) {
             return 15.0F;
         } else {
             Material material = state.getMaterial();
@@ -81,7 +81,7 @@ public class DDSwordItem extends TieredItem implements IVanishable {
      * Check whether this Item can harvest the given Block
      */
     public boolean canHarvestBlock(BlockState blockIn) {
-        return blockIn.isIn(Blocks.COBWEB);
+        return blockIn.matchesBlock(Blocks.COBWEB);
     }
 
     /**
