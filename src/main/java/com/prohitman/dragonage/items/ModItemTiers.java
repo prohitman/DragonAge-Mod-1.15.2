@@ -2,6 +2,7 @@ package com.prohitman.dragonage.items;
 
 import com.prohitman.dragonage.init.ModItems;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 
@@ -23,8 +24,8 @@ public enum ModItemTiers implements IItemTier {
     DWARVEN_STEEL(3, 1400, 8.0F, 7F, 15, () -> {
         return Ingredient.fromItems(ModItems.DWARVEN_STEEL_INGOT.get());
     }),
-    GILDED_IRON(2, 275, 6.0F, 2.0F, 18, () -> {
-        return Ingredient.fromItems(ModItems.GILDED_IRON_INGOT.get());
+    GILDED_IRON(2, 275, 6.0F, 2.0F, 30, () -> {
+        return Ingredient.fromItems(Items.GOLD_INGOT);
     });
 
 

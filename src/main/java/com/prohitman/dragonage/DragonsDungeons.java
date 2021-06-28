@@ -51,7 +51,7 @@ public class DragonsDungeons {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
 		ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-			final Item.Properties properties = new Item.Properties().group(ModItemGroups.DRAGON_AGE_WEAPONS);
+			final Item.Properties properties = new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS);
 			final BlockItem blockItem = new BlockItem(block, properties);
 			blockItem.setRegistryName(block.getRegistryName());
 			registry.register(blockItem);

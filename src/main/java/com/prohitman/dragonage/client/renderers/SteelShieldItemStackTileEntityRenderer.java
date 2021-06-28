@@ -1,31 +1,8 @@
 package com.prohitman.dragonage.client.renderers;
 
-import java.util.List;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.mojang.datafixers.util.Pair;
-import com.prohitman.dragonage.client.models.SteelShieldModel;
-import com.prohitman.dragonage.init.ModItems;
-import com.prohitman.dragonage.items.SteelShieldItem;
-
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.model.RenderMaterial;
-import net.minecraft.client.renderer.texture.AtlasTexture;
-import net.minecraft.client.renderer.tileentity.BannerTileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
-import net.minecraft.item.DyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.BannerPattern;
-import net.minecraft.tileentity.BannerTileEntity;
-import net.minecraft.util.ResourceLocation;
-
-
-public class SteelShieldItemStackTileEntityRenderer extends ItemStackTileEntityRenderer {
-	private final SteelShieldModel shieldModel = new SteelShieldModel();
+public class SteelShieldItemStackTileEntityRenderer{ //extends ItemStackTileEntityRenderer {
+	/*private final SteelShieldModel shieldModel = new SteelShieldModel();
 	public static final ResourceLocation RESOURCE_LOCATION_STEEL_SHIELD_BASE = new ResourceLocation(
 			"dragonage:textures/entity/steel_shield_base");
 	public static final ResourceLocation RESOURCE_LOCATION_STEEL_SHIELD_NO_PATTERN = new ResourceLocation(
@@ -62,5 +39,5 @@ public class SteelShieldItemStackTileEntityRenderer extends ItemStackTileEntityR
 
 			matrixStack.pop();
 		}
-	}
+	}*/
 }

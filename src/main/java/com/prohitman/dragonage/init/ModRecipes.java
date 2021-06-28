@@ -14,9 +14,9 @@ public class ModRecipes {
 
 	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, DragonsDungeons.MOD_ID);
 
-	public static final RegistryObject<IRecipeSerializer<?>> CRAFTING_SPECIAL_STEEL_SHIELD = RECIPE_SERIALIZERS
+/*	public static final RegistryObject<IRecipeSerializer<?>> CRAFTING_SPECIAL_STEEL_SHIELD = RECIPE_SERIALIZERS
 			.register("crafting_special_steelshielddecoration",
-					() -> new SpecialRecipeSerializer<>(SteelShieldRecipes::new));
+					() -> new SpecialRecipeSerializer<>(SteelShieldRecipes::new));*/
 	
 	public static final RegistryObject<IRecipeSerializer<ForgingTableRecipes>> FORGING_TABLE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
 			.register("forging_table_recipe_serializer",

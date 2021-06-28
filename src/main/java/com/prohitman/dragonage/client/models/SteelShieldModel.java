@@ -12,8 +12,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SteelShieldModel extends Model  {
-	private final ModelRenderer plate;
+public class SteelShieldModel{ //extends Model  {
+	/*private final ModelRenderer plate;
 	private final ModelRenderer handle;
 
 	public SteelShieldModel() {
@@ -39,5 +39,5 @@ public class SteelShieldModel extends Model  {
 		this.plate.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
 		this.handle.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
 	}
-	
+	*/
 }

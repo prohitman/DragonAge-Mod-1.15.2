@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": 
-    {
-        "layer0": "dragonsdungeons:item/gilded_iron_ingot"
-    }
-}

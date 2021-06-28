@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "dragonsdungeons:items/gilded_iron_sword"
+    "layer0": "dragonsdungeons:item/gilded_iron_sword"
   }
 }

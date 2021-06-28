@@ -12,16 +12,16 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class SteelShieldRecipes extends SpecialRecipe
+public class SteelShieldRecipes // extends SpecialRecipe
 {
-	public SteelShieldRecipes(ResourceLocation idIn) 
+/*	public SteelShieldRecipes(ResourceLocation idIn)
 	{
 	      super(idIn);
 	}
 
-	/**
+	*//**
 	* Used to check if a recipe matches current crafting inventory
-    */
+    *//*
 	public boolean matches(CraftingInventory inv, World worldIn) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		ItemStack itemstack1 = ItemStack.EMPTY;
@@ -56,9 +56,9 @@ public class SteelShieldRecipes extends SpecialRecipe
 		return !itemstack.isEmpty() && !itemstack1.isEmpty();
 	}
 
-	/**
+	*//**
 	 * Returns an Item that is the result of this recipe
-	 */
+	 *//*
 	public ItemStack getCraftingResult(CraftingInventory inv) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		ItemStack itemstack1 = ItemStack.EMPTY;
@@ -85,14 +85,14 @@ public class SteelShieldRecipes extends SpecialRecipe
      	}
 	}
 
-	/**
+	*//**
 	 * Used to determine if this recipe can fit in a grid of the given width/height
-	 */
+	 *//*
 	public boolean canFit(int width, int height) {
 	   return width * height >= 2;
 	}
 
 	public IRecipeSerializer<?> getSerializer() {
 	   return ModRecipes.CRAFTING_SPECIAL_STEEL_SHIELD.get();
-	}
+	}*/
 }
