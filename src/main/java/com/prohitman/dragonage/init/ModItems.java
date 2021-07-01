@@ -20,12 +20,12 @@ public class ModItems
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DragonsDungeons.MOD_ID);
 	
 	//Materials
-	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
-	public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
-	public static final RegistryObject<Item> ELVEN_BRASS_INGOT = ITEMS.register("elven_brass_ingot", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
-	public static final RegistryObject<Item> MITHRIL_INGOT = ITEMS.register("mithril_ingot", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
-	public static final RegistryObject<Item> DWARVEN_STEEL_INGOT = ITEMS.register("dwarven_steel_ingot", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
-	public static final RegistryObject<Item> DRAGON_BONE = ITEMS.register("dragon_bone", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(64)));
+	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> ELVEN_BRASS_INGOT = ITEMS.register("elven_brass_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> MITHRIL_INGOT = ITEMS.register("mithril_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> DWARVEN_STEEL_INGOT = ITEMS.register("dwarven_steel_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> DRAGON_BONE = ITEMS.register("dragon_bone", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
 
 	//Weapons
 	public static final RegistryObject<Item> STEEL_SWORD = ITEMS.register("steel_sword", () -> new DDSwordItem(ModItemTiers.STEEL, 4, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
@@ -33,13 +33,13 @@ public class ModItems
 	public static final RegistryObject<Item> MITHRIL_SWORD = ITEMS.register("mithril_sword", () -> new DDSwordItem(ModItemTiers.MITHRIL, 6, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> GILDED_IRON_SWORD = ITEMS.register("gilded_iron_sword", () -> new DDSwordItem(ModItemTiers.GILDED_IRON, 3, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> DRAGON_BONE_SWORD = ITEMS.register("dragon_bone_sword", () -> new DDSwordItem(ModItemTiers.DRAGON_BONE, 4, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
-	public static final RegistryObject<Item> ELVEN_BRASS_SWORD = ITEMS.register("elven_brass_sword", () -> new DDSwordItem(ModItemTiers.ELVEN_BRASS, 4.5F, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
+	public static final RegistryObject<Item> ELVEN_BRASS_SWORD = ITEMS.register("elven_brass_sword", () -> new DDSwordItem(ModItemTiers.ELVEN_BRASS, 5, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));// was 4.5F
 
 	//Tools
 	public static final RegistryObject<Item> STEEL_SHOVEL = ITEMS.register("steel_shovel", () -> new DDShovelItem(ModItemTiers.STEEL, 1.5F, -3.0F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> STEEL_PICKAXE = ITEMS.register("steel_pickaxe", () -> new DDPickaxeItem(ModItemTiers.STEEL, 1.5F, -2.8F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> STEEL_AXE = ITEMS.register("steel_axe", () -> new DDAxeItem(ModItemTiers.STEEL, 6.5F, -3.1F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
-	public static final RegistryObject<Item> STEEL_HOE = ITEMS.register("steel_hoe", () -> new DDHoeItem(ModItemTiers.STEEL, 0.5f, -0.9F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
+	public static final RegistryObject<Item> STEEL_HOE = ITEMS.register("steel_hoe", () -> new DDHoeItem(ModItemTiers.STEEL, 1, -0.9F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 
 	public static final RegistryObject<Item> MITHRIL_SHOVEL = ITEMS.register("mithril_shovel", () -> new DDShovelItem(ModItemTiers.MITHRIL, 2.0F, -3.0F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> MITHRIL_PICKAXE = ITEMS.register("mithril_pickaxe", () -> new DDPickaxeItem(ModItemTiers.MITHRIL, 3, -2.8F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
@@ -64,6 +64,6 @@ public class ModItems
 	public static final RegistryObject<Item> ELVEN_BRASS_SHOVEL = ITEMS.register("elven_brass_shovel", () -> new DDShovelItem(ModItemTiers.ELVEN_BRASS, 0F, -3.0F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> ELVEN_BRASS_PICKAXE = ITEMS.register("elven_brass_pickaxe", () -> new DDPickaxeItem(ModItemTiers.ELVEN_BRASS, 1, -2.8F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> ELVEN_BRASS_AXE = ITEMS.register("elven_brass_axe", () -> new DDAxeItem(ModItemTiers.ELVEN_BRASS, 5.0F, -3.1F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
-	public static final RegistryObject<Item> ELVEN_BRASS_HOE = ITEMS.register("elven_brass_hoe", () -> new DDHoeItem(ModItemTiers.ELVEN_BRASS, -1F, -0.9F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
+	public static final RegistryObject<Item> ELVEN_BRASS_HOE = ITEMS.register("elven_brass_hoe", () -> new DDHoeItem(ModItemTiers.ELVEN_BRASS, -1, -0.9F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 
 }

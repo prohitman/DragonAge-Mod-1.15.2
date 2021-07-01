@@ -18,14 +18,14 @@ public enum ModItemTiers implements IItemTier {
     ELVEN_BRASS(3, 910, 8.0F, 4.0F, 14, () -> {
         return Ingredient.fromItems(ModItems.ELVEN_BRASS_INGOT.get());
     }),
-    DRAGON_BONE(5, 3000, 10.0F, 6.0F, 16, () -> {
+    DRAGON_BONE(6, 3000, 10.0F, 6.0F, 16, () -> {
         return Ingredient.fromItems(ModItems.DRAGON_BONE.get());
     }),
     DWARVEN_STEEL(3, 1400, 8.0F, 7F, 15, () -> {
         return Ingredient.fromItems(ModItems.DWARVEN_STEEL_INGOT.get());
     }),
-    GILDED_IRON(2, 275, 6.0F, 2.0F, 30, () -> {
-        return Ingredient.fromItems(Items.GOLD_INGOT);
+    GILDED_IRON(2, 275, 6.0F, 2.0F, 20, () -> {
+        return Ingredient.fromItems(Items.IRON_INGOT);
     });
 
 
@@ -36,7 +36,7 @@ public enum ModItemTiers implements IItemTier {
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
 
-    private ModItemTiers(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
+    ModItemTiers(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
         this.harvestLevel = harvestLevelIn;
         this.maxUses = maxUsesIn;
         this.efficiency = efficiencyIn;
