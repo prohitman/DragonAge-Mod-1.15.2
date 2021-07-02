@@ -10,7 +10,7 @@
 	"item.dragonsdungeons.mithril_ingot": "Mithril Ingot",
 	"item.dragonsdungeons.elven_brass_ingot": "Elven Brass Ingot",
 	"item.dragonsdungeons.steel_nugget": "Steel Nugget",
-	
+
 	"item.dragonsdungeons.elven_brass_sword": "Elven Brass Sword",
 	"item.dragonsdungeons.dragon_bone_sword": "Dragon Bone Sword",
 	"item.dragonsdungeons.dwarven_steel_sword": "Dwarven Steel Sword",
@@ -52,6 +52,10 @@
 	"block.dragonsdungeons.steel_block": "Block Of Steel",
 	"block.dragonsdungeons.candle": "Candle",
 	"block.dragonsdungeons.forging_table": "Forging Table",
-	
+	"item.dragonsdungeons.loot_bag": "Loot Bag",
+	"item.dragonsdungeons.bearded_axe": "Bearded Axe",
+	"item.dragonsdungeons.gold_coins": "Gold Coins",
+
+
 	"container.forging_table": "Forging Table"
 }

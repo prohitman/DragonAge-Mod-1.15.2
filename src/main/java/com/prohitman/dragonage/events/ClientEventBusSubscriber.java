@@ -1,4 +1,4 @@
-package com.prohitman.dragonage.util;
+package com.prohitman.dragonage.events;
 
 import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.client.gui.ForgingTableScreen;

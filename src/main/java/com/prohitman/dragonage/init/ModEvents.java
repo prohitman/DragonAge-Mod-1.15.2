@@ -11,6 +11,7 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemFrameEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -25,6 +26,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,7 +35,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = DragonsDungeons.MOD_ID, bus = Bus.FORGE)
 public class ModEvents {
-
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onEvent(InputEvent event) {
@@ -149,4 +151,5 @@ public class ModEvents {
 			}
 		}
 	}
+
 }

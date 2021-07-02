@@ -18,7 +18,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems 
 {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DragonsDungeons.MOD_ID);
-	
+
+	//Items
+	public static final RegistryObject<Item> GOLD_COINS = ITEMS.register("gold_coins", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
+	public static final RegistryObject<Item> LOOT_BAG = ITEMS.register("loot_bag", () -> new LootBagItem(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(1)));
+
+
 	//Materials
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
 	public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
@@ -34,6 +39,7 @@ public class ModItems
 	public static final RegistryObject<Item> GILDED_IRON_SWORD = ITEMS.register("gilded_iron_sword", () -> new DDSwordItem(ModItemTiers.GILDED_IRON, 3, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> DRAGON_BONE_SWORD = ITEMS.register("dragon_bone_sword", () -> new DDSwordItem(ModItemTiers.DRAGON_BONE, 4, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 	public static final RegistryObject<Item> ELVEN_BRASS_SWORD = ITEMS.register("elven_brass_sword", () -> new DDSwordItem(ModItemTiers.ELVEN_BRASS, 5, -2.4F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));// was 4.5F
+	public static final RegistryObject<Item> BEARDED_AXE = ITEMS.register("bearded_axe", () -> new BeardedAxe(ModItemTiers.STEEL, 6, -3.1F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
 
 	//Tools
 	public static final RegistryObject<Item> STEEL_SHOVEL = ITEMS.register("steel_shovel", () -> new DDShovelItem(ModItemTiers.STEEL, 1.5F, -3.0F, new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS)));
