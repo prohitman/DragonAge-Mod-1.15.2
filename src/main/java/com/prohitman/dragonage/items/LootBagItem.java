@@ -11,9 +11,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.loot.*;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -47,6 +45,7 @@ public class LootBagItem extends Item {
             if (!playerIn.abilities.isCreativeMode) {
                 itemstackIn.shrink(1);
             }
+            worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.NEUTRAL, 1.0F, 1.0F);
             return super.onItemRightClick(worldIn, playerIn, handIn);
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);

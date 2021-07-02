@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "dragonsdungeons:block/cracked_fortress_bricks"
+    }
+}

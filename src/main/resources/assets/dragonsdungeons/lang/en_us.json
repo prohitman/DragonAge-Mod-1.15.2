@@ -48,13 +48,17 @@
 	"item.dragonsdungeons.dwarven_steel_axe": "Dwarven Steel Axe",
 	"item.dragonsdungeons.dwarven_steel_shovel": "Dwarven Steel Shovel",
 	"item.dragonsdungeons.dwarven_steel_hoe": "Dwarven Steel Hoe",
-	
-	"block.dragonsdungeons.steel_block": "Block Of Steel",
-	"block.dragonsdungeons.candle": "Candle",
-	"block.dragonsdungeons.forging_table": "Forging Table",
+
 	"item.dragonsdungeons.loot_bag": "Loot Bag",
 	"item.dragonsdungeons.bearded_axe": "Bearded Axe",
 	"item.dragonsdungeons.gold_coins": "Gold Coins",
+
+	"block.dragonsdungeons.steel_block": "Block Of Steel",
+	"block.dragonsdungeons.candle": "Candle",
+	"block.dragonsdungeons.forging_table": "Forging Table",
+	"block.dragonsdungeons.fortress_bricks": "Fortress Bricks",
+	"block.dragonsdungeons.cracked_fortress_bricks": "Cracked Fortress Bricks",
+	"block.dragonsdungeons.snowy_fortress_bricks": "Snowy Fortress Bricks",
 
 
 	"container.forging_table": "Forging Table"

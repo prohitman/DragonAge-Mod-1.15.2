@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "dragonsdungeons:block/steel_block"
+        "all": "dragonsdungeons:block/fortress_bricks"
     }
 }
