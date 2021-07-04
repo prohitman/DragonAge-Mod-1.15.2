@@ -75,16 +75,14 @@ public class ForgingTableBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		switch (state.get(FACING)) {
-		case NORTH:
-			return FACING_NORTH;
-		case EAST:
-			return FACING_EAST;
-		case WEST:
-			return FACING_WEST;
-		case SOUTH:
-			return FACING_SOUTH;
-		default:
-			return FACING_NORTH;
+			case EAST:
+				return FACING_EAST;
+			case WEST:
+				return FACING_WEST;
+			case SOUTH:
+				return FACING_SOUTH;
+			default:
+				return FACING_NORTH;
 		}
 	}
 
@@ -114,9 +112,7 @@ public class ForgingTableBlock extends Block {
 	}
 
 	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-		return new SimpleNamedContainerProvider((windowid, playerinv, blockpos) -> {
-			return new ForgingTableContainer(windowid, playerinv, IWorldPosCallable.of(worldIn, pos));
-		}, text_component);
+		return new SimpleNamedContainerProvider((windowid, playerinv, blockpos) -> new ForgingTableContainer(windowid, playerinv, IWorldPosCallable.of(worldIn, pos)), text_component);
 	}
 
 	@Override

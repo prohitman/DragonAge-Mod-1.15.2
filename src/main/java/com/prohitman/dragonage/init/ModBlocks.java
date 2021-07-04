@@ -5,6 +5,7 @@ import com.prohitman.dragonage.blocks.CandleBlock;
 import com.prohitman.dragonage.blocks.ForgingTableBlock;
 import com.prohitman.dragonage.blocks.SteelBlock;
 
+import com.prohitman.dragonage.blocks.UrnBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -28,5 +29,6 @@ public class ModBlocks
 	
 	//Container/TileEntity Blocks
 	public static final RegistryObject<Block> FORGING_TABLE = BLOCKS.register("forging_table", () -> new ForgingTableBlock(Block.Properties.create(Material.ROCK).notSolid().hardnessAndResistance(2.25F, 3.25F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> URN = BLOCKS.register("urn", () -> new UrnBlock(Block.Properties.create(Material.ROCK).notSolid().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
 
 }

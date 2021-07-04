@@ -1,7 +1,7 @@
 package com.prohitman.dragonage.init;
 
 import com.prohitman.dragonage.DragonsDungeons;
-import com.prohitman.dragonage.network.DragonAgePacketHandler;
+import com.prohitman.dragonage.network.DDPacketHandler;
 import com.prohitman.dragonage.network.MessageExtendedReachAttack;
 import com.prohitman.dragonage.util.IExtendedReach;
 
@@ -11,7 +11,6 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemFrameEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -26,8 +25,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -62,7 +59,7 @@ public class ModEvents {
 				if (!inputEvent.isCanceled()) {
 					switch (Minecraft.getInstance().objectMouseOver.getType()) {
 					case ENTITY: {
-						DragonAgePacketHandler.HANDLER.sendToServer(new MessageExtendedReachAttack(((EntityRayTraceResult) Minecraft.getInstance().objectMouseOver).getEntity().getEntityId()));
+						DDPacketHandler.HANDLER.sendToServer(new MessageExtendedReachAttack(((EntityRayTraceResult) Minecraft.getInstance().objectMouseOver).getEntity().getEntityId()));
 						
 						if (!thePlayer.isSpectator()) {
 							Minecraft.getInstance().playerController.attackEntity(thePlayer, ((EntityRayTraceResult) Minecraft.getInstance().objectMouseOver).getEntity());

@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
-public class DragonAgePacketHandler {
+public class DDPacketHandler {
 	private static final String PROTOCOL_VERSION = "1";
 
 	private static int id = 0;
