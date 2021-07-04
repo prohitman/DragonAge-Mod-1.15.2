@@ -3,81 +3,73 @@ package com.prohitman.dragonage.containers;
 
 import com.prohitman.dragonage.init.ModBlocks;
 import com.prohitman.dragonage.init.ModContainerTypes;
-import com.prohitman.dragonage.tileentities.UrnTileEntity;
+import com.prohitman.dragonage.tileentities.DDUrnTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import java.util.Objects;
 
-public class UrnContainer /*extends Container*/{
+public class UrnContainer extends Container {
 
-    /*public final UrnTileEntity urnTileEntity;
-    private final IWorldPosCallable canInteractWithCallable;
+    public DDUrnTileEntity urnTileEntity;
+    private IWorldPosCallable canInteractWithCallable;
 
     public UrnContainer(final int windowId, final PlayerInventory playerInventory,
-                        final UrnTileEntity tileEntity) {
+                        final DDUrnTileEntity tileEntity) {
         super(ModContainerTypes.URN_CONTAINER.get(), windowId);
         this.urnTileEntity = tileEntity;
         this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
         int i = (1 - 4) * 18;
 
-        for(int j = 0; j < 1; ++j) {
-            for(int k = 0; k < 9; ++k) {
-                this.addSlot(new Slot(tileEntity, k + j * 9, 8 + k * 18, 18 + j * 18));
+        final int slotSize = 18;
+
+        // Hotbar
+        for (int column = 0; column < 9; ++column) {
+            addSlot(new Slot(playerInventory, column, 8 + column * slotSize, 161 + i));
+        }
+
+        // Player Inventory
+        for (int row = 0; row < 3; ++row) {
+            for (int column = 0; column < 9; ++column) {
+                addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * slotSize, 103 + row * slotSize + i));
             }
         }
 
-        for(int l = 0; l < 3; ++l) {
-            for(int j1 = 0; j1 < 9; ++j1) {
-                this.addSlot(new Slot(playerInventory, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
-            }
+        // Your inventory
+        for (int column = 0; column < 9; ++column) {
+            addSlot(new SlotItemHandler(tileEntity.getInventory(), column, 8 + column * slotSize, 18));
         }
 
-        for(int i1 = 0; i1 < 9; ++i1) {
-            this.addSlot(new Slot(playerInventory, i1, 8 + i1 * 18, 161 + i));
-        }
-
-    }
-
-    private static UrnTileEntity getTileEntity(final PlayerInventory playerInventory,
-                                               final PacketBuffer data) {
-        Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
-        Objects.requireNonNull(data, "data cannot be null");
-        final TileEntity tileAtPos = playerInventory.player.world.getTileEntity(data.readBlockPos());
-        if (tileAtPos instanceof UrnTileEntity) {
-            return (UrnTileEntity) tileAtPos;
-        }
-        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
     }
 
     public UrnContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data) {
         this(windowId, playerInventory, getTileEntity(playerInventory, data));
     }
 
-    *//**
-     * Determines whether supplied player can use this container
-     *//*
+    private static DDUrnTileEntity getTileEntity(final PlayerInventory playerInventory,
+                                                 final PacketBuffer data) {
+        Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
+        Objects.requireNonNull(data, "data cannot be null");
+        final TileEntity tileAtPos = playerInventory.player.world.getTileEntity(data.readBlockPos());
+        if (tileAtPos instanceof DDUrnTileEntity) {
+            return (DDUrnTileEntity) tileAtPos;
+        }
+        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
+    }
+
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
         return isWithinUsableDistance(canInteractWithCallable, playerIn, ModBlocks.URN.get());
     }
-    *//**
-     * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
-     * inventory and the other inventory(s).
-     *//*
+
     public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
@@ -100,8 +92,5 @@ public class UrnContainer /*extends Container*/{
         }
 
         return itemstack;
-    }*/
-
-
-
+    }
 }

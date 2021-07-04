@@ -18,6 +18,6 @@ public class ModContainerTypes
 	public static final RegistryObject<ContainerType<ForgingTableContainer>> FORGING_TABLE_CONTAINER = CONTAINER_TYPES
 			.register("forging_table", () -> IForgeContainerType.create(ForgingTableContainer::new));
 
-	//public static final RegistryObject<ContainerType<UrnContainer>> URN_CONTAINER = CONTAINER_TYPES
-	//		.register("urn", () -> IForgeContainerType.create(UrnContainer::new));
+	public static final RegistryObject<ContainerType<UrnContainer>> URN_CONTAINER = CONTAINER_TYPES
+			.register("urn", () -> IForgeContainerType.create(UrnContainer::new));
 }

@@ -9,6 +9,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.piglin.PiglinTasks;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
@@ -41,10 +42,9 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class UrnBlock extends ContainerBlock implements IWaterLoggable {
+public class UrnBlock extends Block implements IWaterLoggable {
 
     //private static final ITextComponent text_component = new TranslationTextComponent("container.urn");
-    public static final BooleanProperty PROPERTY_OPEN = BlockStateProperties.OPEN;
 
     public static final VoxelShape SHAPES = Stream.of(
             Block.makeCuboidShape(2, 2, 2, 14, 10, 14),
@@ -55,7 +55,6 @@ public class UrnBlock extends ContainerBlock implements IWaterLoggable {
 
     public UrnBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(PROPERTY_OPEN, Boolean.valueOf(false)));
     }
 
     @Override
@@ -63,69 +62,46 @@ public class UrnBlock extends ContainerBlock implements IWaterLoggable {
         return this.SHAPES;
     }
 
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (worldIn.isRemote) {
-            return ActionResultType.SUCCESS;
-        } else {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof DDUrnTileEntity) {
-                player.openContainer((DDUrnTileEntity)tileentity);
-            }
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player,
+                                             Hand handIn, BlockRayTraceResult result) {
+        if (!world.isRemote()) {
+            TileEntity tileEntity = world.getTileEntity(pos);
+            if (tileEntity instanceof DDUrnTileEntity) {
+                INamedContainerProvider containerProvider = new INamedContainerProvider() {
+                    @Override
+                    public ITextComponent getDisplayName() {
+                        return new TranslationTextComponent("screen.dragonsdungeons.urn");
+                    }
 
-            return ActionResultType.CONSUME;
+                    @Override
+                    public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+                        return new UrnContainer(i, playerInventory, (DDUrnTileEntity) tileEntity);
+                    }
+                };
+                NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider, tileEntity.getPos());
+            }
         }
+        return ActionResultType.SUCCESS;
     }
 
+    @Override
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.matchesBlock(newState.getBlock())) {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof IInventory) {
-                InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory)tileentity);
-                worldIn.updateComparatorOutputLevel(pos, this);
-            }
-
-            super.onReplaced(state, worldIn, pos, newState, isMoving);
-        }
-    }
-
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        if (tileentity instanceof DDUrnTileEntity) {
-            ((DDUrnTileEntity)tileentity).urnTick();
-        }
-    }
-
-    @Nullable
-    public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return new DDUrnTileEntity();
-    }
-
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
-    /**
-     * Called by ItemBlocks after a block is set in the world, to allow post-place logic
-     */
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if (stack.hasDisplayName()) {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof DDUrnTileEntity) {
-                ((DDUrnTileEntity)tileentity).setCustomName(stack.getDisplayName());
+        if (state.getBlock() != newState.getBlock()) {
+            TileEntity te = worldIn.getTileEntity(pos);
+            if (te instanceof DDUrnTileEntity) {
+                InventoryHelper.dropItems(worldIn, pos, ((DDUrnTileEntity) te).getItems());
             }
         }
-
     }
 
-    public boolean hasComparatorInputOverride(BlockState state) {
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return ModTileEntityTypes.URN_TILE_ENTITY_TYPE.get().create();
+    }
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
         return true;
-    }
-
-    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-        return Container.calcRedstone(worldIn.getTileEntity(pos));
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(PROPERTY_OPEN);
     }
 }

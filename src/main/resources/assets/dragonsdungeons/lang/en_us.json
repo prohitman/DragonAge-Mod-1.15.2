@@ -62,5 +62,8 @@
 	"block.dragonsdungeons.urn": "Urn",
 
 
-	"container.forging_table": "Forging Table"
+	"container.forging_table": "Forging Table",
+	"container.urn": "Urn",
+	"screen.dragonsdungeons.urn": "Urn"
+
 }
