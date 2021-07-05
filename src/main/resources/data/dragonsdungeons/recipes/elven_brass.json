@@ -1,0 +1,11 @@
+{
+  "type": "dragonsdungeons:forging_table_recipe_serializer",
+  "first_ingredient": {
+    "item": "dragonsdungeons:molten_gold_ingot"
+  },
+  "second_ingredient": {
+    "item": "dragonsdungeons:molten_steel_ingot"
+  },
+  "result": "dragonsdungeons:elven_brass_ingot",
+  "count": 1
+}

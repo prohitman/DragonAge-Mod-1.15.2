@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "dragonsdungeons:block/fortress_bricks",
+        "top": "dragonsdungeons:block/fortress_bricks",
+        "side": "dragonsdungeons:block/fortress_bricks"
+    }
+}

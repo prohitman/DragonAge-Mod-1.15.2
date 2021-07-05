@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "dragonsdungeons:block/fortress_bricks_slabs" },
+        "type=top": { "model": "dragonsdungeons:block/fortress_bricks_slabs_top" },
+        "type=double": { "model": "dragonsdungeons:block/fortress_bricks" }
+    }
+}

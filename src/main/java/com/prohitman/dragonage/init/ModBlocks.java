@@ -3,11 +3,11 @@ package com.prohitman.dragonage.init;
 import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.blocks.*;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraftforge.client.model.obj.MaterialLibrary;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,6 +21,10 @@ public class ModBlocks
 	public static final RegistryObject<Block> FORTRESS_BRICKS = BLOCKS.register("fortress_bricks", () -> new Block(Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
 	public static final RegistryObject<Block> CRACKED_FORTRESS_BRICKS = BLOCKS.register("cracked_fortress_bricks", () -> new Block(Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
 	public static final RegistryObject<Block> SNOWY_FORTRESS_BRICKS = BLOCKS.register("snowy_fortress_bricks", () -> new Block(Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> FORTRESS_BRICKS_SLABS = BLOCKS.register("fortress_bricks_slabs", () -> new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> FORTRESS_BRICKS_STAIRS = BLOCKS.register("fortress_bricks_stairs", () -> new StairsBlock(FORTRESS_BRICKS.get().getDefaultState(), Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> ADAMANTITE_DEPOSIT = BLOCKS.register("adamantite_deposit", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).setRequiresTool().hardnessAndResistance(3.0F, 3.0F)));
+	public static final RegistryObject<Block> MITHRIL_CRYSTAL = BLOCKS.register("mithril_crystal", () -> new MithrilCrystalBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).sound(SoundType.GLASS).setRequiresTool().hardnessAndResistance(3.0F, 3.0F).setLightLevel((blockState) -> 7)));
 
 	//Decorations
 	public static final RegistryObject<Block> CANDLE = BLOCKS.register("candle", () -> new CandleBlock(Block.Properties.create(Material.MISCELLANEOUS).notSolid().hardnessAndResistance(0.0F, 0.0F).setLightLevel((state) -> 10).sound(SoundType.SCAFFOLDING)));

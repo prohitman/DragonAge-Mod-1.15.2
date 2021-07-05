@@ -1,7 +1,7 @@
 {
   "type": "dragonsdungeons:forging_table_recipe_serializer",
   "first_ingredient": {
-    "item": "minecraft:iron_ingot"
+    "item": "dragonsdungeons:molten_iron_ingot"
   },
   "second_ingredient": {
     "item": "minecraft:coal"

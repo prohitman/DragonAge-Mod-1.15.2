@@ -3,7 +3,7 @@ package com.prohitman.dragonage.containers;
 
 import com.prohitman.dragonage.init.ModBlocks;
 import com.prohitman.dragonage.init.ModContainerTypes;
-import com.prohitman.dragonage.tileentities.DDUrnTileEntity;
+import com.prohitman.dragonage.tileentities.UrnTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -12,18 +12,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import java.util.Objects;
 
 public class UrnContainer extends Container {
 
-    public DDUrnTileEntity urnTileEntity;
+    public UrnTileEntity urnTileEntity;
     private IWorldPosCallable canInteractWithCallable;
 
     public UrnContainer(final int windowId, final PlayerInventory playerInventory,
-                        final DDUrnTileEntity tileEntity) {
+                        final UrnTileEntity tileEntity) {
         super(ModContainerTypes.URN_CONTAINER.get(), windowId);
         this.urnTileEntity = tileEntity;
         this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
@@ -54,13 +53,13 @@ public class UrnContainer extends Container {
         this(windowId, playerInventory, getTileEntity(playerInventory, data));
     }
 
-    private static DDUrnTileEntity getTileEntity(final PlayerInventory playerInventory,
-                                                 final PacketBuffer data) {
+    private static UrnTileEntity getTileEntity(final PlayerInventory playerInventory,
+                                               final PacketBuffer data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
         final TileEntity tileAtPos = playerInventory.player.world.getTileEntity(data.readBlockPos());
-        if (tileAtPos instanceof DDUrnTileEntity) {
-            return (DDUrnTileEntity) tileAtPos;
+        if (tileAtPos instanceof UrnTileEntity) {
+            return (UrnTileEntity) tileAtPos;
         }
         throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
     }

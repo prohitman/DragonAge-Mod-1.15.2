@@ -1,41 +1,38 @@
 package com.prohitman.dragonage.tileentities;
 
-import com.prohitman.dragonage.blocks.UrnBlock;
-import com.prohitman.dragonage.containers.UrnContainer;
 import com.prohitman.dragonage.init.ModTileEntityTypes;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.minecraftforge.items.ItemStackHandler;
 
-public class UrnTileEntity/* extends LockableLootTileEntity*/ {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-    /*private NonNullList<ItemStack> chestContents = NonNullList.withSize(9, ItemStack.EMPTY);
-    protected int numPlayersUsing;
-    private IItemHandlerModifiable items = createHandler();
-    private LazyOptional<IItemHandlerModifiable> itemHandler = LazyOptional.of(() -> items);
+public class UrnTileEntity extends TileEntity implements ITickableTileEntity{
+    //public final int size;
+    public int timer;
+    public boolean requiresUpdate = true;
+    private NonNullList<ItemStack> urnContents = NonNullList.withSize(9, ItemStack.EMPTY);
 
-    public UrnTileEntity(TileEntityType<?> typeIn) {
-        super(typeIn);
+    public final IItemHandlerModifiable inventory;
+    protected LazyOptional<IItemHandlerModifiable> handler;
+
+    private UrnTileEntity(TileEntityType<?> urnType) {
+        super(urnType);
+        //this.size = 9;
+        inventory = this.createHandler();
+        handler = LazyOptional.of(() -> inventory);
     }
 
     public UrnTileEntity() {
@@ -43,136 +40,135 @@ public class UrnTileEntity/* extends LockableLootTileEntity*/ {
     }
 
     @Override
-    public int getSizeInventory() {
-        return 9;
-    }
-
-    @Override
-    public NonNullList<ItemStack> getItems() {
-        return this.chestContents;
-    }
-
-    @Override
-    public void setItems(NonNullList<ItemStack> itemsIn) {
-        this.chestContents = itemsIn;
-    }
-
-    @Override
-    protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("container.urn");
-    }
-
-    @Override
-    protected Container createMenu(int id, PlayerInventory player) {
-        return new UrnContainer(id, player, this);
-    }
-
-    @Override
-    public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
-        if (!this.checkLootAndWrite(compound)) {
-            ItemStackHelper.saveAllItems(compound, this.chestContents);
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return this.handler.cast();
         }
-        return compound;
+        return super.getCapability(cap, side);
+    }
+
+    public LazyOptional<IItemHandlerModifiable> getHandler() {
+        return this.handler;
+    }
+
+    public IItemHandlerModifiable getInventory() {
+        return this.inventory;
+    }
+
+    public IItemHandlerModifiable createHandler() {
+        return new ItemStackHandler(this.urnContents.size()) {
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                world.notifyBlockUpdate(pos, getBlockState(), getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+                return super.insertItem(slot, stack, simulate);
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                world.notifyBlockUpdate(pos, getBlockState(), getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+                return super.extractItem(slot, amount, simulate);
+            }
+        };
+    }
+
+    public ItemStack getItemInSlot(int slot) {
+        return this.handler.map(inventory -> inventory.getStackInSlot(slot)).orElse(ItemStack.EMPTY);
+    }
+
+    public ItemStack insertItem(int slot, ItemStack stack) {
+        ItemStack itemIn = stack.copy();
+        stack.shrink(itemIn.getCount());
+        this.requiresUpdate = true;
+        return this.handler.map(inventory -> inventory.insertItem(slot, itemIn, false)).orElse(ItemStack.EMPTY);
+    }
+
+    public ItemStack extractItem(int slot) {
+        int count = getItemInSlot(slot).getCount();
+        this.requiresUpdate = true;
+        return this.handler.map(inventory -> inventory.extractItem(slot, count, false)).orElse(ItemStack.EMPTY);
+    }
+
+    public int getSize() {
+        return this.urnContents.size();
+    }
+
+    public NonNullList<ItemStack> getItems() {
+        return this.urnContents;
     }
 
     @Override
     public void read(BlockState state, CompoundNBT compound) {
         super.read(state, compound);
-        this.chestContents = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        if (!this.checkLootAndRead(compound)) {
-            ItemStackHelper.loadAllItems(compound, this.chestContents);
+        ListNBT list = compound.getList("Items", 10);
+        for (int x = 0; x < list.size(); ++x) {
+            CompoundNBT nbt = list.getCompound(x);
+            int r = nbt.getByte("Slot") & 255;
+            this.handler.ifPresent(inventory -> {
+                int invslots = inventory.getSlots();
+                if (r >= 0 && r < invslots) {
+                    inventory.setStackInSlot(r, ItemStack.read(nbt));
+                }
+            });
         }
-    }
-
-    private void playSound(SoundEvent sound) {
-        double dx = (double) this.pos.getX() + 0.5D;
-        double dy = (double) this.pos.getY() + 0.5D;
-        double dz = (double) this.pos.getZ() + 0.5D;
-        this.world.playSound((PlayerEntity) null, dx, dy, dz, sound, SoundCategory.BLOCKS, 0.5f,
-                this.world.rand.nextFloat() * 0.1f + 0.9f);
+        this.requiresUpdate = true;
     }
 
     @Override
-    public boolean receiveClientEvent(int id, int type) {
-        if (id == 1) {
-            this.numPlayersUsing = type;
-            return true;
-        } else {
-            return super.receiveClientEvent(id, type);
+    public CompoundNBT write(CompoundNBT compound) {
+        super.write(compound);
+        ListNBT list = new ListNBT();
+        int slots = inventory.getSlots();
+        for (int x = 0; x < slots; ++x) {
+            ItemStack stack = inventory.getStackInSlot(x);
+            CompoundNBT nbt = new CompoundNBT();
+            nbt.putByte("Slot", (byte) x);
+            stack.write(nbt);
+            list.add(nbt);
+        }
+
+        compound.put("Items", list);
+        return compound;
+    }
+
+    public void updateTile() {
+        this.requestModelDataUpdate();
+        this.markDirty();
+        if (this.getWorld() != null) {
+            this.getWorld().notifyBlockUpdate(pos, this.getBlockState(), this.getBlockState(), 3);
         }
     }
 
+    @Nullable
     @Override
-    public void openInventory(PlayerEntity player) {
-        if (!player.isSpectator()) {
-            if (this.numPlayersUsing < 0) {
-                this.numPlayersUsing = 0;
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        return new SUpdateTileEntityPacket(this.getPos(), -1, this.getUpdateTag());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        this.handleUpdateTag(this.world.getBlockState(pkt.getPos()), pkt.getNbtCompound());
+    }
+
+    @Override
+    @Nonnull
+    public CompoundNBT getUpdateTag() {
+        return this.serializeNBT();
+    }
+
+    @Override
+    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+        this.deserializeNBT(tag);
+    }
+
+    @Override
+    public void tick() {
+        this.timer++;
+        if (this.world != null) {
+            if (this.requiresUpdate) {
+                updateTile();
+                this.requiresUpdate = false;
             }
-
-            ++this.numPlayersUsing;
-            this.onOpenOrClose();
         }
     }
 
-    @Override
-    public void closeInventory(PlayerEntity player) {
-        if (!player.isSpectator()) {
-            --this.numPlayersUsing;
-            this.onOpenOrClose();
-        }
-    }
-
-    protected void onOpenOrClose() {
-        Block block = this.getBlockState().getBlock();
-        if (block instanceof UrnBlock) {
-            this.world.addBlockEvent(this.pos, block, 1, this.numPlayersUsing);
-            this.world.notifyNeighborsOfStateChange(this.pos, block);
-        }
-    }
-
-    public static int getPlayersUsing(IBlockReader reader, BlockPos pos) {
-        BlockState blockstate = reader.getBlockState(pos);
-        if (blockstate.hasTileEntity()) {
-            TileEntity tileentity = reader.getTileEntity(pos);
-            if (tileentity instanceof UrnTileEntity) {
-                return ((UrnTileEntity) tileentity).numPlayersUsing;
-            }
-        }
-        return 0;
-    }
-
-    public static void swapContents(UrnTileEntity te, UrnTileEntity otherTe) {
-        NonNullList<ItemStack> list = te.getItems();
-        te.setItems(otherTe.getItems());
-        otherTe.setItems(list);
-    }
-
-    @Override
-    public void updateContainingBlockInfo() {
-        super.updateContainingBlockInfo();
-        if (this.itemHandler != null) {
-            this.itemHandler.invalidate();
-            this.itemHandler = null;
-        }
-    }
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return itemHandler.cast();
-        }
-        return super.getCapability(cap);    }
-
-    private IItemHandlerModifiable createHandler() {
-        return new InvWrapper(this);
-    }
-
-    @Override
-    public void remove() {
-        super.remove();
-        if(itemHandler != null) {
-            itemHandler.invalidate();
-        }
-    }*/
 }

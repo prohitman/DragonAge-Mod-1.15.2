@@ -1,0 +1,11 @@
+{
+  "type": "dragonsdungeons:forging_table_recipe_serializer",
+  "first_ingredient": {
+    "item": "dragonsdungeons:molten_steel_ingot"
+  },
+  "second_ingredient": {
+    "item": "dragonsdungeons:molten_adamantite_ingot"
+  },
+  "result": "dragonsdungeons:dwarven_steel_ingot",
+  "count": 1
+}

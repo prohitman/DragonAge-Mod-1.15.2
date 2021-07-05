@@ -1,0 +1,11 @@
+{
+  "type": "dragonsdungeons:forging_table_recipe_serializer",
+  "first_ingredient": {
+    "item": "dragonsdungeons:molten_dwarven_ingot"
+  },
+  "second_ingredient": {
+    "item": "dragonsdungeons:mithril_crystal"
+  },
+  "result": "dragonsdungeons:mithril_ingot",
+  "count": 1
+}

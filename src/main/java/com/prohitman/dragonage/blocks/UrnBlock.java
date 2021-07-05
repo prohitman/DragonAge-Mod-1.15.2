@@ -1,33 +1,24 @@
 package com.prohitman.dragonage.blocks;
 
-import com.prohitman.dragonage.containers.ForgingTableContainer;
 import com.prohitman.dragonage.containers.UrnContainer;
 import com.prohitman.dragonage.init.ModTileEntityTypes;
-import com.prohitman.dragonage.tileentities.DDUrnTileEntity;
 import com.prohitman.dragonage.tileentities.UrnTileEntity;
 import net.minecraft.block.*;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.piglin.PiglinTasks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.*;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.stats.Stats;
-import net.minecraft.tileentity.BarrelTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.IBooleanFunction;
@@ -39,11 +30,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class UrnBlock extends Block implements IWaterLoggable {
@@ -72,7 +61,7 @@ public class UrnBlock extends Block implements IWaterLoggable {
                                              Hand handIn, BlockRayTraceResult result) {
         if (!world.isRemote()) {
             TileEntity tileEntity = world.getTileEntity(pos);
-            if (tileEntity instanceof DDUrnTileEntity) {
+            if (tileEntity instanceof UrnTileEntity) {
                 INamedContainerProvider containerProvider = new INamedContainerProvider() {
                     @Override
                     public ITextComponent getDisplayName() {
@@ -81,7 +70,7 @@ public class UrnBlock extends Block implements IWaterLoggable {
 
                     @Override
                     public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                        return new UrnContainer(i, playerInventory, (DDUrnTileEntity) tileEntity);
+                        return new UrnContainer(i, playerInventory, (UrnTileEntity) tileEntity);
                     }
                 };
                 NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider, tileEntity.getPos());
@@ -94,8 +83,8 @@ public class UrnBlock extends Block implements IWaterLoggable {
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             TileEntity te = worldIn.getTileEntity(pos);
-            if (te instanceof DDUrnTileEntity) {
-                InventoryHelper.dropItems(worldIn, pos, ((DDUrnTileEntity) te).getItems());
+            if (te instanceof UrnTileEntity) {
+                InventoryHelper.dropItems(worldIn, pos, ((UrnTileEntity) te).getItems());
             }
         }
     }

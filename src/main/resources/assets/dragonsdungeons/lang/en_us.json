@@ -11,6 +11,12 @@
 	"item.dragonsdungeons.elven_brass_ingot": "Elven Brass Ingot",
 	"item.dragonsdungeons.dragon_bone": "Dragon Bone",
 	"item.dragonsdungeons.steel_nugget": "Steel Nugget",
+	"item.dragonsdungeons.molten_iron_ingot": "Molten Iron Ingot",
+	"item.dragonsdungeons.molten_gold_ingot": "Molten Gold Ingot",
+	"item.dragonsdungeons.molten_steel_ingot": "Molten Steel Ingot",
+	"item.dragonsdungeons.molten_dwarven_ingot": "Molten Dwarven Ingot",
+	"item.dragonsdungeons.molten_adamantite_ingot": "Molten Adamantite Ingot",
+
 
 	"item.dragonsdungeons.elven_brass_sword": "Elven Brass Sword",
 	"item.dragonsdungeons.dragon_bone_sword": "Dragon Bone Sword",
@@ -62,6 +68,11 @@
 	"block.dragonsdungeons.snowy_fortress_bricks": "Snowy Fortress Bricks",
 	"block.dragonsdungeons.urn": "Urn",
 	"block.dragonsdungeons.chandelier": "Chandelier",
+	"block.dragonsdungeons.mithril_crystal": "Mithril Crystal",
+	"block.dragonsdungeons.fortress_bricks_stairs": "Fortress Bricks Stair",
+	"block.dragonsdungeons.fortress_bricks_slabs": "Fortress Bricks Slab",
+	"block.dragonsdungeons.adamantite_deposit": "Adamantite Deposit",
+
 
 	"container.forging_table": "Forging Table",
 	"container.urn": "Urn",
