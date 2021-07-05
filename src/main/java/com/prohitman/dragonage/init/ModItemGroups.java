@@ -12,5 +12,5 @@ public class ModItemGroups
 	      public ItemStack createIcon() {
 	         return new ItemStack(ModItems.MITHRIL_INGOT.get());
 	      }
-	   }).setNoScrollbar().setNoTitle();
+	   }).setNoTitle();
 }

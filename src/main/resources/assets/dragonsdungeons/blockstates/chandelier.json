@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "lit=false": {
+            "model": "dragonsdungeons:block/chandelier"
+        },
+        "lit=true": {
+            "model": "dragonsdungeons:block/chandelier"
+        }
+    }
+}

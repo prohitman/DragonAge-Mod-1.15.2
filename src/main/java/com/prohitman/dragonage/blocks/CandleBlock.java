@@ -113,8 +113,7 @@ public class CandleBlock extends Block {
 
 	@SuppressWarnings("deprecation")
 	public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
-		return useContext.getItem().getItem() == this.asItem() && state.get(CANDLES) < 3 ? true
-				: super.isReplaceable(state, useContext);
+		return useContext.getItem().getItem() == this.asItem() && state.get(CANDLES) < 3 || super.isReplaceable(state, useContext);
 	}
 
 	public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {

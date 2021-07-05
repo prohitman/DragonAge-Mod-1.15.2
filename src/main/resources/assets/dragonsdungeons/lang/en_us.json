@@ -9,6 +9,7 @@
 	"item.dragonsdungeons.dwarven_steel_ingot": "Dwarven Steel Ingot",
 	"item.dragonsdungeons.mithril_ingot": "Mithril Ingot",
 	"item.dragonsdungeons.elven_brass_ingot": "Elven Brass Ingot",
+	"item.dragonsdungeons.dragon_bone": "Dragon Bone",
 	"item.dragonsdungeons.steel_nugget": "Steel Nugget",
 
 	"item.dragonsdungeons.elven_brass_sword": "Elven Brass Sword",
@@ -60,7 +61,7 @@
 	"block.dragonsdungeons.cracked_fortress_bricks": "Cracked Fortress Bricks",
 	"block.dragonsdungeons.snowy_fortress_bricks": "Snowy Fortress Bricks",
 	"block.dragonsdungeons.urn": "Urn",
-
+	"block.dragonsdungeons.chandelier": "Chandelier",
 
 	"container.forging_table": "Forging Table",
 	"container.urn": "Urn",

@@ -6,20 +6,23 @@ import com.prohitman.dragonage.containers.UrnContainer;
 import net.minecraft.client.gui.IHasContainer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class UrnContainerScreen extends ContainerScreen<UrnContainer> implements IHasContainer<UrnContainer> {
-    /** The ResourceLocation containing the chest GUI texture. */
-    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("dragonsdungeons:textures/gui/generic_54.png");
-    /** Window height is calculated with these values" the more rows, the higher */
+public class UrnScreen extends ContainerScreen<UrnContainer> implements IHasContainer<UrnContainer> {
+    /**
+     * The ResourceLocation containing the chest GUI texture.
+     */
+    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    /**
+     * Window height is calculated with these values" the more rows, the higher
+     */
     private final int inventoryRows;
 
-    public UrnContainerScreen(UrnContainer container, PlayerInventory playerInventory, ITextComponent title) {
+    public UrnScreen(UrnContainer container, PlayerInventory playerInventory, ITextComponent title) {
         super(container, playerInventory, title);
         this.passEvents = false;
         int i = 222;
