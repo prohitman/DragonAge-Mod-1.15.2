@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/block",
 	"textures": {
 		"1": "dragonsdungeons:block/urn",
 		"particle": "dragonsdungeons:block/urn"

@@ -1,12 +1,8 @@
 package com.prohitman.dragonage.util;
 
 import com.prohitman.dragonage.DragonsDungeons;
-import com.prohitman.dragonage.client.renderers.SteelShieldItemStackTileEntityRenderer;
 
-import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 

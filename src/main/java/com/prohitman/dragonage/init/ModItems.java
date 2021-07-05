@@ -1,16 +1,9 @@
 package com.prohitman.dragonage.init;
 
 import com.prohitman.dragonage.DragonsDungeons;
-import com.prohitman.dragonage.client.renderers.SteelShieldItemStackTileEntityRenderer;
 import com.prohitman.dragonage.items.*;
 
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

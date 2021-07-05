@@ -1,5 +1,5 @@
 {
-	"credit": "\"texture_size\": [32, 32],ade with Blockbench",
+	"parent": "minecraft:block/block",
 	"textures": {
 		"0": "dragonsdungeons:block/chandelier",
 		"particle": "dragonsdungeons:block/chandelier"
