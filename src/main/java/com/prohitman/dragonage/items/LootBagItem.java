@@ -28,6 +28,7 @@ public class LootBagItem extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.NEUTRAL, 1.0F, 1.0F);
         if(!worldIn.isRemote()){
             ItemStack itemstackIn = playerIn.getHeldItem(handIn);
             LootContext.Builder lootcontext$builder = (new LootContext.Builder((ServerWorld) Objects.requireNonNull(playerIn).world)).withParameter(LootParameters.ORIGIN, playerIn.getPositionVec()).withParameter(LootParameters.TOOL, this.getDefaultInstance()).withRandom(rand).withLuck(5);
@@ -45,7 +46,6 @@ public class LootBagItem extends Item {
             if (!playerIn.abilities.isCreativeMode) {
                 itemstackIn.shrink(1);
             }
-            worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.NEUTRAL, 1.0F, 1.0F);
             return super.onItemRightClick(worldIn, playerIn, handIn);
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);

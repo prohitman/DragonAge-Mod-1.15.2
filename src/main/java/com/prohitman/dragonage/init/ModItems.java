@@ -15,6 +15,8 @@ public class ModItems
 	//Items
 	public static final RegistryObject<Item> GOLD_COINS = ITEMS.register("gold_coins", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
 	public static final RegistryObject<Item> LOOT_BAG = ITEMS.register("loot_bag", () -> new LootBagItem(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(1)));
+	public static final RegistryObject<Item> FIRE_BOMB = ITEMS.register("fire_bomb", () -> new LootBagItem(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(1)));
+	public static final RegistryObject<Item> ACID_BOMB = ITEMS.register("acid_bomb", () -> new AcidBomb(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(8)));
 
 	//Materials
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.DRAGONS_DUNGEONS).maxStackSize(64)));
