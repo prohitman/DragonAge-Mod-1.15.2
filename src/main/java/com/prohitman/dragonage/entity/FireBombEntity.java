@@ -58,7 +58,7 @@ public class FireBombEntity extends ProjectileItemEntity {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-    public void animateTick(World worldIn, BlockPos pos, Random rand) {
+    public void animateParticles(World worldIn, BlockPos pos, Random rand) {
         float radius = 1.5F;
         for (float x = -radius; x < radius; x += 0.25f) {
             for (float z = -radius; z < radius; z += 0.25f) {
@@ -87,7 +87,7 @@ public class FireBombEntity extends ProjectileItemEntity {
         }*/
 
         float radius2 = 1.25f;
-        double speed = 0.25;
+        double speed = 0.5;
         for (float a = 0; a < Math.PI * 2; a += Math.PI / 180) {
             float x = (float) (Math.cos(a) * radius2);
             float z = (float) (Math.sin(a) * radius2);
@@ -108,16 +108,14 @@ public class FireBombEntity extends ProjectileItemEntity {
      */
     protected void onImpact(RayTraceResult result) {
         super.onImpact(result);
-        this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.NEUTRAL, 1, 1, false);
-        this.animateTick(this.world, this.getPosition(), this.rand);
+
         if (!this.world.isRemote) {
             Potion potion = Potions.FIRE_RESISTANCE;
             List<EffectInstance> list = Lists.newArrayList();
             list.add(new EffectInstance(Effects.INSTANT_DAMAGE, 1, 1));
 
             if (!list.isEmpty()) {
-                this.func_213888_a(list, result.getType() == RayTraceResult.Type.ENTITY ? ((EntityRayTraceResult) result).getEntity() : null);
-
+                this.getAndEffectNearbyEntities(list, result.getType() == RayTraceResult.Type.ENTITY ? ((EntityRayTraceResult) result).getEntity() : null);
             }
             if(result instanceof BlockRayTraceResult){
                 this.setBlockOnFire(this.getPosition(), ((BlockRayTraceResult)result).getFace());
@@ -126,17 +124,23 @@ public class FireBombEntity extends ProjectileItemEntity {
             this.world.playEvent(i, this.getPosition(), PotionUtils.getPotionColor(potion));
             this.remove();
         }
-    }
 
-    public void setBlockOnFire(BlockPos blockpos, Direction direction) {
-        BlockPos blockpos1 = blockpos;
-        if (AbstractFireBlock.canLightBlock(world, blockpos1, direction)) {
-            BlockState blockstate1 = AbstractFireBlock.getFireForPlacement(world, blockpos1);
-            world.setBlockState(blockpos1, blockstate1, 11);
+        if(this.world.isRemote){
+            this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.NEUTRAL, 1, 1, false);
+            this.animateParticles(this.world, this.getPosition(), this.rand);
         }
     }
 
-    private void func_213888_a(List<EffectInstance> p_213888_1_, @Nullable Entity p_213888_2_) {
+    public void setBlockOnFire(BlockPos blockpos, Direction direction) {
+
+        BlockPos randompos = this.world.getBlockRandomPos(blockpos.getX() + 1, blockpos.getY(), blockpos.getZ() -1, 15);
+        if (AbstractFireBlock.canLightBlock(world, randompos, direction)) {
+            BlockState blockstate1 = AbstractFireBlock.getFireForPlacement(world, randompos);
+            world.setBlockState(randompos, blockstate1, 11);
+        }
+    }
+
+    private void getAndEffectNearbyEntities(List<EffectInstance> p_213888_1_, @Nullable Entity p_213888_2_) {
         AxisAlignedBB axisalignedbb = this.getBoundingBox().grow(10.0D, 3.0D, 10.0D);
         List<LivingEntity> list = this.world.getEntitiesWithinAABB(LivingEntity.class, axisalignedbb);
         if (!list.isEmpty()) {

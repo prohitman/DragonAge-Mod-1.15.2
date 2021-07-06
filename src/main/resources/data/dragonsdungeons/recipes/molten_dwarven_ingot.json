@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "dragonsdungeons:dwarven_steel_ingot"
+  },
+  "result": "dragonsdungeons:molten_dwarven_ingot",
+  "experience": 1.0,
+  "cookingtime": 250
+}

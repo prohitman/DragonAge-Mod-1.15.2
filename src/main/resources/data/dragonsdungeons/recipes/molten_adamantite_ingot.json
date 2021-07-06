@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "dragonsdungeons:adamantite_deposit"
+  },
+  "result": "dragonsdungeons:molten_adamantite_ingot",
+  "experience": 1.0,
+  "cookingtime": 250
+}
