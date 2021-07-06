@@ -4,6 +4,7 @@ import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.client.gui.ForgingTableScreen;
 import com.prohitman.dragonage.client.gui.UrnScreen;
 import com.prohitman.dragonage.client.renderers.AcidBombEntityRenderer;
+import com.prohitman.dragonage.client.renderers.FireBombEntityRenderer;
 import com.prohitman.dragonage.init.ModBlocks;
 import com.prohitman.dragonage.init.ModContainerTypes;
 
@@ -31,5 +32,6 @@ public class ClientEventBusSubscriber
 		RenderTypeLookup.setRenderLayer(ModBlocks.CHANDELIER.get(), RenderType.getCutoutMipped());
 
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.ACID_BOMB_ENTITY.get(), AcidBombEntityRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.FIRE_BOMB_ENTITY.get(), FireBombEntityRenderer::new);
 	}
 }

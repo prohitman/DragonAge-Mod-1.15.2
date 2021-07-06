@@ -2,6 +2,7 @@ package com.prohitman.dragonage.init;
 
 import com.prohitman.dragonage.DragonsDungeons;
 import com.prohitman.dragonage.entity.AcidBombEntity;
+import com.prohitman.dragonage.entity.FireBombEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
@@ -17,4 +18,9 @@ public class ModEntityTypes {
             "acid_bomb_entity",
             () -> EntityType.Builder.<AcidBombEntity>create(AcidBombEntity::new, EntityClassification.MISC).size(0.25F, 0.25F)
                     .build(new ResourceLocation(DragonsDungeons.MOD_ID, "acid_bomb_entity").toString()));
+
+    public static final RegistryObject<EntityType<FireBombEntity>> FIRE_BOMB_ENTITY = ENTITY_TYPES.register(
+            "fire_bomb_entity",
+            () -> EntityType.Builder.<FireBombEntity>create(FireBombEntity::new, EntityClassification.MISC).size(0.25F, 0.25F)
+                    .build(new ResourceLocation(DragonsDungeons.MOD_ID, "fire_bomb_entity").toString()));
 }
